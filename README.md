@@ -51,11 +51,101 @@ STEP:11  On the board, by giving required input, the LEDs starts to glow light, 
 
 VERILOG CODE
 
-   <<< TYPE YOUR VERILOG CODE >>>
+ # SR FLIPFLOP:
+ ```
+module srff(s,r,clk,reset,q);
+input s,r,clk,reset;
+output reg q;
+always@(posedge clk)
+begin
+if(reset==1)
+q =1'b0;
+else 
+begin
+case({s,r})
+ 2'b00: q = q;
+ 2'b01: q = 1'b0;
+ 2'b10: q = 1'b1;
+ 2'b11: q = 1'bx;
+ default:q = ~q;
+endcase
+end 
+end
+endmodule
+```
+# JK FLIPFLOP:
+```
+module jk_ff(j,k,clk,reset,q);
+input j,k,clk,reset;
+output reg q;
+always@(posedge clk)
+begin
+if(reset==1)
+q =1'b0;
+else 
+begin
+case({j,k})
+ 2'b00: q = q;
+ 2'b01: q = 1'b0;
+ 2'b10: q = 1'b1;
+ 2'b11: q = ~q;
+ default:q =1'b0;
+endcase
+end 
+end
+endmodule
+```
+
+# T FLIPFLOP:
+```
+module tff(clk,rst,j,q);
+input clk,rst,j;
+output reg q;
+always@(posedge clk)
+begin
+case(t)
+1'b0:q=q;
+1'b1:q=~q;
+default=q=1'b0;
+endcase
+end
+endmodule
+```
+
+# D LIPFLOP:
+```
+module dff(clk,rst,d,q);
+input clk,rst,d;
+output reg q;
+always@(posedge clk)
+begin
+if(rst==1)
+q=1'b0;
+else
+q=d;
+end
+endmodule
+```
+
 
 OUTPUT WAVEFORM
- <<< PASTE YOUR OUTPUT WAVEFORM >>>
+ # SR FLIPFLOP:
+ ![image](https://github.com/THARUN729/VLSI-LAB-EXP-4/assets/161407766/6618db3f-a7fc-4968-a295-3df9f570202d)
+
+ # JK FLIPFLOP:
+ ![image](https://github.com/THARUN729/VLSI-LAB-EXP-4/assets/161407766/4615a6e3-dc9d-455e-97f3-5cf07cc72a40)
+
+ # T FLIPFLOP:
+ ![image](https://github.com/THARUN729/VLSI-LAB-EXP-4/assets/161407766/f84a11b0-364c-406e-80ca-61e095d56f4d)
+
+ # D FLIPFLOP:
+ ![image](https://github.com/THARUN729/VLSI-LAB-EXP-4/assets/161407766/bd568e3d-b577-47a7-91cd-20a8683666a9)
+
+
+
+
 
 RESULT
+Hence thus given To simulate and synthesis SR, JK, T, D - FLIPFLOP, COUNTER DESIGN using vivado
 
 
